@@ -20,3 +20,16 @@ export interface IRequestData {
     language: string;
     country: string;
 }
+export interface IArticleContent {
+    author: 'string';
+    content: 'string';
+    description: 'string';
+    publishedAt: 'string';
+    source: {
+        readonly id: 'string';
+        name: 'string';
+    };
+    title: 'string';
+    url: 'string';
+    urlToImage: 'string';
+}
