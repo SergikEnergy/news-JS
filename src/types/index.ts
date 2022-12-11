@@ -33,3 +33,22 @@ export interface IArticleContent {
     url: 'string';
     urlToImage: 'string';
 }
+export interface ISourceContent {
+    category: 'string';
+    country: 'string';
+    description: 'string';
+    readonly id: 'string';
+    language: 'string';
+    name: 'string';
+    url: 'string';
+}
+
+export interface IGetArticlesView {
+    articles: IArticleContent[];
+    status: 'string';
+    totalResults: 'number';
+}
+export interface IGetAllSources {
+    sources: ISourceContent[];
+    status: 'string';
+}
