@@ -1,4 +1,4 @@
-//create an Interfaces
+//create an Interfaces and types
 
 interface ISourceResponse {
     readonly id: string;

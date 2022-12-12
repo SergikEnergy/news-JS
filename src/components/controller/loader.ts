@@ -1,17 +1,20 @@
+import { IAllSources } from '../../types/index';
 type Options = {
     apiKey: string;
 };
-
+interface Callback<T> {
+    (data?: T): void;
+}
 class Loader {
-    baseLink: string;
-    options: Options;
+    private baseLink: string;
+    public options: Options;
     constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp(
-        { endpoint, options = {} }: { endpoint: string; options: object },
+        { endpoint, options = {} }: { endpoint: string; options?: object },
         callback = () => {
             console.error('No callback for GET response');
         }
@@ -40,7 +43,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: (data: string) => void, options = {}) {
+    load(method: string, endpoint: string, callback: (data: IAllSources) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

@@ -4,7 +4,7 @@ import { IGetAllSources, IGetArticlesView } from '../../types/index';
 
 export class AppView {
     news: News;
-    sources: Sources;
+    public sources: Sources;
     constructor() {
         this.news = new News();
         this.sources = new Sources();
