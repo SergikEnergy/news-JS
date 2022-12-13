@@ -36,7 +36,11 @@ class News {
         }
 
         (document.querySelector('.news') as HTMLDivElement).innerHTML = '';
-        (document.querySelector('.news') as HTMLDivElement).appendChild(fragment);
+        if (data.length === 0) {
+            (document.querySelector('.news') as HTMLDivElement).innerHTML =
+                "<p>This resourse doesn't have some articles</p>";
+        }
+        (document.querySelector('.news') as HTMLDivElement)?.appendChild(fragment);
     }
 }
 

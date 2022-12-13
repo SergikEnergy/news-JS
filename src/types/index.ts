@@ -1,13 +1,9 @@
 //create an Interfaces and types
 
-interface ISourceResponse {
+export interface ISourceResponse {
     readonly id: string;
     name: string;
-    description: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
+    [key: string]: string;
 }
 export interface IAllSources {
     status: string;
@@ -21,34 +17,72 @@ export interface IRequestData {
     country: string;
 }
 export interface IArticleContent {
-    author: 'string';
-    content: 'string';
-    description: 'string';
-    publishedAt: 'string';
     source: {
-        readonly id: 'string';
-        name: 'string';
+        id: string;
+        name: string;
     };
-    title: 'string';
-    url: 'string';
-    urlToImage: 'string';
+    author: string;
+    content: string;
+    description: string;
+    publishedAt: string;
+    title: string;
+    url: string;
+    urlToImage: string;
 }
 export interface ISourceContent {
-    category: 'string';
-    country: 'string';
-    description: 'string';
-    readonly id: 'string';
-    language: 'string';
-    name: 'string';
-    url: 'string';
+    category: string;
+    country: string;
+    description: string;
+    readonly id: string;
+    language: string;
+    name: string;
+    url: string;
+    [keys: string]: string;
 }
 
 export interface IGetArticlesView {
+    status: string;
+    totalResults: number;
     articles: IArticleContent[];
-    status: 'string';
-    totalResults: 'number';
 }
-export interface IGetAllSources {
+export type Callback<T> = (data?: T) => void;
+
+export type Link = {
+    endpoint: string;
+    options?: {
+        sources: string;
+    };
+};
+export type IGetAllSources = {
     sources: ISourceContent[];
-    status: 'string';
-}
+    status: string;
+};
+
+export const AlphabetArr: string[] = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+];

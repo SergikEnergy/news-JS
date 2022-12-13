@@ -1,10 +1,11 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { IGetAllSources, IGetArticlesView } from '../../types/index';
+import type { IGetAllSources, IGetArticlesView } from '../../types/index';
 
 export class AppView {
     news: News;
-    public sources: Sources;
+    sources: Sources;
+
     constructor() {
         this.news = new News();
         this.sources = new Sources();

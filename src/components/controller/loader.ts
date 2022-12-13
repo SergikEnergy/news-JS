@@ -1,28 +1,22 @@
-import { IAllSources } from '../../types/index';
+import { Link, Callback } from '../../types/index';
+
 type Options = {
     apiKey: string;
 };
-interface Callback<T> {
-    (data?: T): void;
-}
+
 class Loader {
-    private baseLink: string;
+    readonly baseLink: string;
     public options: Options;
     constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp(
-        { endpoint, options = {} }: { endpoint: string; options?: object },
-        callback = () => {
-            console.error('No callback for GET response');
-        }
-    ) {
-        this.load('GET', endpoint, callback, options);
+    getResp<T>(url: Link, callback: Callback<T>) {
+        this.load('GET', url.endpoint, callback, url.options ?? {});
     }
 
-    errorHandler(res: Response) {
+    errorHandler(res: Response): Response | never {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -32,7 +26,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: object, endpoint: string) {
+    makeUrl(options: { sources?: string }, endpoint: string) {
         const urlOptions: { [index: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -43,11 +37,11 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: (data: IAllSources) => void, options = {}) {
+    load<T>(method: string, endpoint: string, callback: Callback<T>, options: { sources?: string }) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data) => callback(data))
+            .then((data: T) => callback(data))
             .catch((err) => console.error(err));
     }
 }
