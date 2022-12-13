@@ -12,24 +12,134 @@ header h1 {
     font-size: 40px;
     font-weight: 800;
 }
-
-footer {
-    height: 100px;
+.letters {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
-footer .copyright {
+.letter {
+    padding: 5px;
+}
+.letter:first-child {
+    padding-left: 0;
+}
+.letter:last-child {
+    padding-left: 0;
+}
+.letter:focus,
+.letter:hover,
+.letter:target {
+    cursor: pointer;
+    text-decoration: underline;
+    color: greenyellow;
+    background-color: azure;
+}
+
+.footer {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer .copyright {
     font-size: 14px;
     color: #333;
     text-align: center;
 }
-footer .copyright a {
+.footer .copyright a {
     color: #444;
 }
-footer .copyright a:hover {
+.footer .copyright a:hover {
     color: #555;
 }
-footer .copyright:before {
+.footer .copyright:before {
     content: '©';
+}
+.footer__course {
+    /* height: 140px; */
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+    margin-left: 5%;
+}
+.footer__author {
+    /* height: 140px; */
+    width: 90%;
+    margin-left: 5%;
+}
+.link_github {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+}
+.link_github p {
+    margin: 0;
+}
+
+.link_github:hover p,
+.copyright a:hover {
+    color: rgb(19, 175, 123);
+}
+
+.link_github:hover path,
+.link_rs:hover path:not(:last-child) {
+    fill: rgb(19, 175, 123);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 65%;
+    margin: auto;
+}
+.wrapper_sources {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media screen and (max-width: 1250px) {
+    main {
+        width: 82%;
+    }
+}
+@media screeb and (max-width: 1050px) {
+    main {
+        width: 87%;
+    }
+}
+@media screen and (max-width: 800px) {
+    main {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 720px) {
+    .wrapperSources {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: space-between;
+    }
+}
+@media (max-width: 500px) {
+    header {
+        padding: 10px;
+    }
+    footer {
+        padding: 0 10px;
+    }
 }
