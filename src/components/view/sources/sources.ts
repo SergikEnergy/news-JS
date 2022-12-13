@@ -15,6 +15,7 @@ AlphabetArr.forEach((symbolElem: string) => {
 
 class Sources {
     draw(data: ISourceResponse[]) {
+        console.log(data);
         const fragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
 

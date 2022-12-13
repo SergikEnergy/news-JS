@@ -11,14 +11,18 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: IGetArticlesView) {
-        const values = data?.articles ? data?.articles : [];
-        this.news.draw(values);
+    drawNews(data: IGetArticlesView | undefined) {
+        if (data) {
+            const values = data?.articles ? data?.articles : [];
+            this.news.draw(values);
+        }
     }
 
-    drawSources(data: IGetAllSources) {
-        const values = data?.sources ? data?.sources : [];
-        this.sources.draw(values);
+    drawSources(data: IGetAllSources | undefined) {
+        if (data) {
+            const values = data?.sources ? data?.sources : [];
+            this.sources.draw(values);
+        }
     }
 }
 
