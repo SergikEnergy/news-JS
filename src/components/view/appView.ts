@@ -11,7 +11,7 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: IGetArticlesView | undefined) {
+    drawNews(data: IGetArticlesView) {
         if (data) {
             const values = data?.articles ? data?.articles : [];
             this.news.draw(values);

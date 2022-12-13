@@ -4,7 +4,7 @@ import { ISourceResponse, AlphabetArr } from '../../../types/index';
 //create alphabet sort
 const divForSymbols = document.createElement('div');
 (divForSymbols as HTMLElement).classList.add('letters');
-document.querySelector('.main')?.prepend(divForSymbols);
+document.querySelector('main')?.prepend(divForSymbols);
 
 AlphabetArr.forEach((symbolElem: string) => {
     const divForLetter = document.createElement('div');
